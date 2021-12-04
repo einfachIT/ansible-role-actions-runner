@@ -1,0 +1,28 @@
+---
+
+- name: install unison and avahi-utils
+  apt:
+    name:
+      - git
+      - avahi-utils
+    update_cache: true
+    state: present
+  become: true
+
+- name: create runner install directory
+  file:
+    path: "/home/{{ installation_os_user }}/actions-runner"
+    owner: "{{ installation_os_user }}"
+    group: "{{ installation_os_group }}"
+    mode: "0755"
+    state: directory
+
+- name: download actions-runner package
+  ansible.builtin.unarchive:
+    src: "https://github.com/actions/runner/releases/download/v2.285.0/actions-runner-linux-arm-2.285.0.tar.gz"
+    dest: "/home/{{ installation_os_user }}/actions_runner/"
+    owner: "{{ installation_os_user }}"
+    group: "{{ installation_os_group }}"
+    remote_src: true
+  notify:
+    - install dependencies

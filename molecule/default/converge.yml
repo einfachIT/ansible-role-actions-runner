@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include actions_runner"
+      include_role:
+        name: "actions_runner"

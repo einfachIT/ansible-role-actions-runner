@@ -1,0 +1,4 @@
+---
+
+- name: install dependencies
+  ansible.builtin.command: /home/{{ installation_os_user }}/actions-runner/installdependencies.sh 
