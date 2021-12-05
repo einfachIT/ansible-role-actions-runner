@@ -12,6 +12,7 @@
     user:
       name: 'pi'
       state: present
+
   - name: add user
     user:
       name: 'pi'
