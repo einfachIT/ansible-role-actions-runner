@@ -24,3 +24,6 @@
     remote_src: true
   notify:
     - install dependencies
+    - configure runner
+    - install runner service
+    - start runner service

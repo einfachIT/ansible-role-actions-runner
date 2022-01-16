@@ -2,3 +2,17 @@
 
 - name: install dependencies
   ansible.builtin.command: /home/{{ installation_os_user }}/actions-runner/bin/installdependencies.sh
+
+- name: configure runner
+  ansible.builtin.command: >
+    /home/{{ installation_os_user }}/actions-runner/config.sh
+      --unattended
+      --url https://github.com/einfachIT/ansible-role-actions-runner
+      --token AGBRE5ZAKPUHHKYGEQHSDJTBZCPI2
+  become: false
+
+- name: install runner service
+  ansible.builtin.command: /home/{{ installation_os_user }}/actions-runner/svc.sh install
+
+- name: start runner service
+  ansible.builtin.command: /home/{{ installation_os_user }}/actions-runner/svc.sh start

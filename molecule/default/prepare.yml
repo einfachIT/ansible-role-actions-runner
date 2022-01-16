@@ -1,19 +1,12 @@
 ---
-- name: Prepare
+- name: Converge
   hosts: all
   tasks:
-
-  - name: upgrade packages
-    ansible.builtin.apt:
-      upgrade: true
-      update_cache: true
-
-  - name: add user group
-    user:
-      name: 'pi'
-      state: present
-
-  - name: add user
-    user:
-      name: 'pi'
-      group: 'pi'
+    - name: add user group
+      user:
+        name: 'pi'
+        state: present
+    - name: add user
+      user:
+        name: 'pi'
+        group: 'pi'
