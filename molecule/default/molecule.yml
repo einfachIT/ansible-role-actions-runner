@@ -18,6 +18,7 @@ provisioner:
 scenario:
   name: default
   test_sequence:
+    - dependency
     - lint
     - destroy
     - create
