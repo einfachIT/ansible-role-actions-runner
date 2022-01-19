@@ -1,6 +1,24 @@
 ---
 - name: Converge
   hosts: all
+  pre_tasks:
+  - name: Get github runner registration token
+    uri:
+      url: "https://api.github.com/orgs/einfachIT/actions/runners/registration-token"
+      force_basic_auth: true
+      user: "{{ github_api_user }}"
+      password: "{{ access_token }}"
+      method: POST
+      status_code: 201
+      return_content: true
+      headers:
+        Accept: application/vnd.github.v3+json
+    register: response
+
+  - name: set token variables
+    set_fact:
+      registration_token: "{{ response.json.token }}"
+
   tasks:
     - name: "Include actions_runner"
       include_role:

@@ -1,5 +1,5 @@
 ---
-- name: Converge
+- name: Prepare
   hosts: all
   tasks:
     - name: add user group
@@ -10,3 +10,6 @@
       user:
         name: 'pi'
         group: 'pi'
+    - name: apt update cache
+      apt:
+        update_cache: true

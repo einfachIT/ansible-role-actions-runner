@@ -1,3 +1,6 @@
 ---
 ignore: |
   venv
+rules:
+  braces:
+    ignore: defaults/main.yml

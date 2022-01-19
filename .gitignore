@@ -1,3 +1,4 @@
 .molecule
 .DS_Store
 venv
+.token

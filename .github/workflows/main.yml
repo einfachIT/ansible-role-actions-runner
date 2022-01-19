@@ -26,6 +26,11 @@ jobs:
           curl -fsSL https://get.docker.com | sudo bash
           sudo apt -y install python3 python3-pip python3-venv
 
+      - name: prerun script
+        run: |
+          REGISTRATION_TOKEN=$(./get_registration_token.sh)
+          REMOVE_TOKEN=$(./get_remove_token.sh)
+
       - name: Run molecule tests
         run: |
           python3 -m venv venv

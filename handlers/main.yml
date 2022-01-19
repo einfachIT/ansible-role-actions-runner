@@ -5,14 +5,23 @@
 
 - name: configure runner
   ansible.builtin.command: >
-    /home/{{ installation_os_user }}/actions-runner/config.sh
+    ./config.sh
       --unattended
-      --url https://github.com/einfachIT/ansible-role-actions-runner
-      --token AGBRE5ZAKPUHHKYGEQHSDJTBZCPI2
-  become: false
+      --url https://github.com/einfachIT
+      --token {{ registration_token }}
+  become: true
+  become_user: "{{ installation_os_user }}"
+  args:
+    chdir: /home/{{ installation_os_user }}/actions-runner/
 
 - name: install runner service
-  ansible.builtin.command: /home/{{ installation_os_user }}/actions-runner/svc.sh install
+  ansible.builtin.command: ./svc.sh install
+  args:
+    chdir: /home/{{ installation_os_user }}/actions-runner/
+  when: false
 
 - name: start runner service
-  ansible.builtin.command: /home/{{ installation_os_user }}/actions-runner/svc.sh start
+  ansible.builtin.command: ./svc.sh start
+  args:
+    chdir: /home/{{ installation_os_user }}/actions-runner/
+  when: false
