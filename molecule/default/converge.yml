@@ -23,4 +23,4 @@
   tasks:
     - name: "Include actions_runner"
       include_role:
-        name: "actions_runner"
+        name: "einfachit.actions_runner"
