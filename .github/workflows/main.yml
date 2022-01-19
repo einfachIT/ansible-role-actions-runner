@@ -31,3 +31,5 @@ jobs:
           source source.me
           export CONTAINER_IMAGE=balenalib/amd64-debian-python
           molecule test
+        env:
+          ACCESS_TOKEN: ${{ access_token }}
