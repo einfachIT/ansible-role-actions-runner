@@ -3,3 +3,4 @@ installation_os_user: "pi"
 installation_os_group: "pi"
 actions_runner_arch: arm64
 registration_token: "{{ undef(hint='You must specify github runner registration_token') }}"
+setup_runner_service: false

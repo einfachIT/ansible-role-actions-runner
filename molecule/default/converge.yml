@@ -13,6 +13,7 @@
       return_content: true
       headers:
         Accept: application/vnd.github.v3+json
+    no_log: true
     register: response
 
   - name: set token variables

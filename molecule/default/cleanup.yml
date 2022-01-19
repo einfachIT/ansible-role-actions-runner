@@ -15,6 +15,7 @@
       headers:
         Accept: application/vnd.github.v3+json
     register: response
+    no_log: true
 
   - name: set token variables
     set_fact:

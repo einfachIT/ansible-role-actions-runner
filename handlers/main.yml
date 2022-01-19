@@ -18,10 +18,10 @@
   ansible.builtin.command: ./svc.sh install
   args:
     chdir: /home/{{ installation_os_user }}/actions-runner/
-  when: false
+  when: setup_runner_service
 
 - name: start runner service
   ansible.builtin.command: ./svc.sh start
   args:
     chdir: /home/{{ installation_os_user }}/actions-runner/
-  when: false
+  when: setup_runner_service
