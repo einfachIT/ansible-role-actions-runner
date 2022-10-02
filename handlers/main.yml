@@ -1,27 +1,27 @@
 ---
 
-- name: install dependencies
+- name: Install dependencies
   ansible.builtin.command: /home/{{ installation_os_user }}/actions-runner/bin/installdependencies.sh
 
-- name: configure runner
+- name: Configure runner
   ansible.builtin.command: >
     ./config.sh
       --unattended
       --url https://github.com/einfachIT
-      --token {{ registration_token }}
+      --token {{ actions_runner_token }}
   become: true
   become_user: "{{ installation_os_user }}"
   args:
     chdir: /home/{{ installation_os_user }}/actions-runner/
 
-- name: install runner service
+- name: Install runner service
   ansible.builtin.command: ./svc.sh install
   args:
     chdir: /home/{{ installation_os_user }}/actions-runner/
-  when: setup_runner_service
+  when: actions_runner_setup_service
 
-- name: start runner service
+- name: Start runner service
   ansible.builtin.command: ./svc.sh start
   args:
     chdir: /home/{{ installation_os_user }}/actions-runner/
-  when: setup_runner_service
+  when: actions_runner_setup_service

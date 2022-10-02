@@ -1,6 +1,7 @@
 ---
 dependency:
   name: galaxy
+prerun: false
 driver:
   name: docker
 lint: |
@@ -12,9 +13,12 @@ platforms:
     image: ${CONTAINER_IMAGE:-"balenalib/raspberrypi4-64-debian-python"}
 provisioner:
   name: ansible
+  config_options:
+    defaults:
+      remote_tmp: /tmp/.ansible
   ansible_args:
     - --extra-vars
-    - "access_token=${ACCESS_TOKEN} github_api_user=Bassinator"
+    - "actions_runner_token=${ACCESS_TOKEN} github_api_user=Bassinator"
 scenario:
   name: default
   test_sequence:
