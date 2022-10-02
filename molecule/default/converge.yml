@@ -4,4 +4,4 @@
   tasks:
     - name: "Include actions_runner"
       ansible.builtin.include_role:
-        name: "einfachit.epic.actions_runner"
+        name: "einfachit.actions_runner"
