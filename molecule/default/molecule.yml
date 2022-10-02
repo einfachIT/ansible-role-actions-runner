@@ -17,7 +17,7 @@ provisioner:
       remote_tmp: /tmp/.ansible
   ansible_args:
     - --extra-vars
-    - "actions_runner_token=${ACCESS_TOKEN} github_api_user=Bassinator"
+    - "actions_runner_token=${ACCESS_TOKEN} github_api_user=Bassinator actions_runner_arch=${CPU_ARCHITECTURE:-'arm64'}"
 scenario:
   name: default
   test_sequence:
