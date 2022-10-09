@@ -4,6 +4,7 @@
   ansible.builtin.apt:
     name:
       - git
+      - sshpass
     state: present
   become: true
 
